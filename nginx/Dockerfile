@@ -16,7 +16,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache bash \
     && adduser -D -H -u 1000 -s /bin/bash www-data
-
+ENV PHP_MEMORY_LIMIT=2G
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000
 

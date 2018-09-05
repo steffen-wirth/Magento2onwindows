@@ -128,6 +128,18 @@ RUN sed -i "s/xdebug.remote_autostart=0/xdebug.remote_autostart=1/" /usr/local/e
     sed -i "s/xdebug.remote_enable=0/xdebug.remote_enable=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
     sed -i "s/xdebug.cli_color=0/xdebug.cli_color=1/" /usr/local/etc/php/conf.d/xdebug.ini
 
+
+###########################################################################
+# XSL:
+###########################################################################
+
+ARG INSTALL_XSL=false
+
+RUN if [ ${INSTALL_XSL} = true ]; then \
+    apt-get install -y --force-yes libxslt-dev && \
+    docker-php-ext-install xsl \
+;fi
+
 ###########################################################################
 # Phpdbg:
 ###########################################################################
